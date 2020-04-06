@@ -25,38 +25,26 @@ class  RleSequence:
                 if start_f:
                     if start < count:
                         start_f = False
-                        #print('STAAART:', i, self.seq[i])
                         ans.append(self.seq[i])
                         self.remainder = start + step
-                        #print(self.full_off, self.remainder, i)
-                        
                         self.off = self.remainder
-                        #print('vhod',self.full_off, self.off, i)
                         while (self.full_off < stop - 1) and (count > self.off):
                             #print('iiiiiii:', i, self.seq[i])
                             ans.append(self.seq[i])
                             self.off += step
                             self.full_off += step
-                            #print('whi')
-                        #print(self.full_off, self.remainder, i)
-                        self.remainder = self.off - count
-                        #print(self.full_off, self.remainder, i)
+                        self.remainder = self.off - count 
                         if self.full_off > (stop - 1):
                             break
                     else:
                         start -= count
                 else:
                     self.off = self.remainder
-                    #print('vhod',self.full_off, self.off, i)
                     while (self.full_off < stop - 1) and (count > self.off):
-                        #print('iiiiiii:', i, self.seq[i])
                         ans.append(self.seq[i])
                         self.off += step
                         self.full_off += step
-                        #print('whi')
-                    #print(self.full_off, self.remainder, i)
                     self.remainder = self.off - count
-                    #print(self.full_off, self.remainder, i)
                     if self.full_off > (stop - 1):
                         break
             return np.array(ans)
